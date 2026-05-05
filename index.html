@@ -1,0 +1,1608 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AFFRANCHI.CO — VOTRE BOÎTE VOUS ÉCRASE</title>
+<meta name="description" content="AFFRANCHI.CO — Diagnostic brutal de votre masse salariale. Audit, automatisation IA, transition RH. Reprenez le contrôle." />
+<meta name="theme-color" content="#000000" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Oswald:wght@500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #000000;
+    --anthracite: #111111;
+    --white: #FFFFFF;
+    --gray: #AAAAAA;
+    --gray-dim: #555555;
+    --blood: #8B0000;
+    --blood-hot: #B30000;
+    --display-font: 'Anton', 'Impact', 'Arial Narrow Bold', sans-serif;
+  }
+
+  html, body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'JetBrains Mono', monospace;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    max-width: 100%;
+  }
+
+  ::selection { background: var(--blood); color: var(--white); }
+
+  .display {
+    font-family: var(--display-font);
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    line-height: 0.95;
+  }
+  .invoice__label, .step__label, .urssaf__title, .invoice__foot .total,
+  .urssaf__total, .option--a .option__title, .option--b .option__title,
+  .foot__brand, .chart-block__title, .urssaf__stamp {
+    font-family: var(--display-font);
+  }
+  .btn { font-family: var(--display-font); }
+  .step__num { font-family: var(--display-font); }
+
+  /* ========== TICKER ========== */
+  .ticker {
+    border-bottom: 2px solid var(--white);
+    background: var(--black);
+    overflow: hidden;
+    white-space: nowrap;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+  .ticker__track {
+    display: inline-block;
+    padding: 10px 0;
+    animation: tickerScroll 40s linear infinite;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  .ticker__track span { padding: 0 24px; }
+  .ticker__track .red { color: var(--blood-hot); font-weight: 700; }
+  @keyframes tickerScroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* ========== SECTION 1 — CHOC ========== */
+  .choc {
+    min-height: 100vh;
+    padding: 32px 20px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-bottom: 4px solid var(--white);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .brand {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gray);
+  }
+  .brand__logo {
+    color: var(--white);
+    font-weight: 700;
+    border: 2px solid var(--white);
+    padding: 6px 10px;
+  }
+  .brand__meta { text-align: right; line-height: 1.5; }
+
+  .warning {
+    margin-top: 48px;
+    color: var(--blood-hot);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: clamp(10px, 2.4vw, 13px);
+    letter-spacing: 0.18em;
+    font-weight: 700;
+    border-top: 1px solid var(--blood);
+    border-bottom: 1px solid var(--blood);
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    line-height: 1.4;
+  }
+  .warning::before {
+    content: "▲";
+    font-size: 14px;
+  }
+  .warning .blink { animation: blink 1.4s steps(2) infinite; }
+  @keyframes blink {
+    0%, 50% { opacity: 1; }
+    50.01%, 100% { opacity: 0.15; }
+  }
+
+  .choc__title {
+    margin-top: 20px;
+    font-size: clamp(56px, 14vw, 200px);
+    line-height: 0.92;
+    overflow-wrap: break-word;
+    letter-spacing: -0.02em;
+  }
+  .choc__title .strike {
+    position: relative;
+    display: inline-block;
+  }
+  .choc__title .strike::after {
+    content: "";
+    position: absolute;
+    left: -2%;
+    right: -2%;
+    top: 48%;
+    height: clamp(6px, 1.4vw, 14px);
+    background: var(--blood);
+    transform: rotate(-2deg);
+  }
+
+  .choc__sub {
+    margin-top: 28px;
+    max-width: 720px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: clamp(15px, 2.2vw, 19px);
+    line-height: 1.55;
+    color: var(--white);
+  }
+  .choc__sub .punct {
+    color: var(--blood-hot);
+    font-weight: 700;
+  }
+  .choc__sub .gray { color: var(--gray); }
+
+  .cta-row {
+    margin-top: 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    align-items: flex-start;
+  }
+
+  .btn {
+    font-family: var(--display-font);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    border: none;
+    cursor: pointer;
+    background: var(--blood);
+    color: var(--white);
+    padding: 22px 32px;
+    font-size: clamp(20px, 4vw, 28px);
+    border-radius: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    transition: background 0.12s linear, transform 0.12s linear;
+    position: relative;
+    text-decoration: none;
+  }
+  .btn:hover {
+    background: var(--blood-hot);
+    transform: translate(2px, -2px);
+  }
+  .btn:active { transform: translate(0, 0); }
+  .btn::after {
+    content: "→";
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85em;
+  }
+  .btn--block { width: 100%; justify-content: space-between; }
+  .btn--ghost {
+    background: transparent;
+    color: var(--gray);
+    border: 1px solid var(--gray-dim);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    padding: 14px 18px;
+    font-weight: 700;
+  }
+  .btn--ghost:hover {
+    background: var(--gray-dim);
+    color: var(--white);
+    transform: none;
+  }
+  .btn--ghost::after { content: ""; }
+
+  .scroll-cue {
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--gray);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+  .scroll-cue__line {
+    flex: 1;
+    height: 1px;
+    background: var(--gray-dim);
+  }
+
+  /* ========== SECTION 2 — LE MIROIR ========== */
+  .miroir {
+    background: var(--anthracite);
+    padding: 80px 20px 100px;
+    border-bottom: 4px solid var(--white);
+  }
+  .section-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    color: var(--blood-hot);
+    font-weight: 700;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  .section-tag::before {
+    content: "";
+    width: 28px;
+    height: 1px;
+    background: var(--blood-hot);
+    display: inline-block;
+  }
+
+  .miroir__title {
+    font-size: clamp(40px, 9vw, 96px);
+    max-width: 14ch;
+    line-height: 1;
+    margin-bottom: 56px;
+  }
+  .miroir__title .red { color: var(--blood-hot); }
+
+  .invoice {
+    border: 2px solid var(--white);
+    background: var(--black);
+    padding: 0;
+    max-width: 920px;
+  }
+  .invoice__head {
+    border-bottom: 2px solid var(--white);
+    padding: 16px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--gray);
+    text-transform: uppercase;
+  }
+  .invoice__head strong { color: var(--white); font-weight: 700; }
+  .invoice__head .stamp {
+    color: var(--blood-hot);
+    border: 1.5px solid var(--blood-hot);
+    padding: 4px 10px;
+    transform: rotate(-3deg);
+    font-weight: 700;
+    letter-spacing: 0.15em;
+  }
+
+  .invoice__row {
+    padding: 22px 20px;
+    border-bottom: 1px dashed var(--gray-dim);
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 16px;
+    align-items: baseline;
+  }
+  .invoice__row:last-child { border-bottom: none; }
+  .invoice__num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--gray);
+    letter-spacing: 0.1em;
+  }
+  .invoice__label {
+    font-family: var(--display-font);
+    text-transform: uppercase;
+    font-size: clamp(20px, 4vw, 32px);
+    line-height: 1.05;
+    letter-spacing: 0.005em;
+  }
+  .invoice__label .red { color: var(--blood-hot); }
+  .invoice__amount {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--gray);
+    letter-spacing: 0.1em;
+    text-align: right;
+    white-space: nowrap;
+  }
+  .invoice__foot {
+    border-top: 2px solid var(--white);
+    padding: 18px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  .invoice__foot .total {
+    font-family: var(--display-font);
+    font-size: clamp(22px, 5vw, 32px);
+    color: var(--blood-hot);
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+    line-height: 1;
+  }
+
+  /* Collapsing chart */
+  .chart-block {
+    margin-top: 60px;
+    border: 2px solid var(--white);
+    background: var(--black);
+    padding: 24px 20px;
+    max-width: 920px;
+  }
+  .chart-block__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 18px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--gray);
+    text-transform: uppercase;
+  }
+  .chart-block__title {
+    font-family: var(--display-font);
+    color: var(--white);
+    font-size: 22px;
+    letter-spacing: 0.02em;
+  }
+  .chart-block__delta {
+    color: var(--blood-hot);
+    font-weight: 700;
+  }
+  .chart {
+    width: 100%;
+    height: 200px;
+    display: block;
+  }
+  .chart text {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    fill: var(--gray);
+    letter-spacing: 0.1em;
+  }
+
+  /* ========== SECTION 3 — LE SCALPEL ========== */
+  .scalpel {
+    background: var(--black);
+    padding: 90px 20px 100px;
+    border-bottom: 4px solid var(--white);
+  }
+  .scalpel__title {
+    font-size: clamp(48px, 10vw, 120px);
+    max-width: 12ch;
+    line-height: 1;
+    margin-bottom: 60px;
+  }
+  .scalpel__title .red-dot {
+    color: var(--blood-hot);
+  }
+
+  .steps {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+    border: 2px solid var(--white);
+  }
+  .step {
+    border-bottom: 2px solid var(--white);
+    padding: 32px 24px;
+    background: var(--black);
+    position: relative;
+    transition: background 0.2s linear;
+  }
+  .step:last-child { border-bottom: none; }
+  .step:hover { background: var(--anthracite); }
+
+  .step__num {
+    font-family: var(--display-font);
+    font-size: clamp(64px, 14vw, 140px);
+    line-height: 0.85;
+    -webkit-text-stroke: 2px var(--white);
+    color: transparent;
+    letter-spacing: -0.02em;
+    transition: color 0.2s linear;
+  }
+  .step:hover .step__num { color: var(--blood-hot); -webkit-text-stroke-color: var(--blood-hot); }
+
+  .step__label {
+    margin-top: 12px;
+    font-family: var(--display-font);
+    text-transform: uppercase;
+    font-size: clamp(28px, 6vw, 48px);
+    letter-spacing: 0.01em;
+    line-height: 0.95;
+  }
+  .step__sep {
+    margin-top: 16px;
+    width: 60px;
+    height: 4px;
+    background: var(--blood);
+  }
+  .step__body {
+    margin-top: 18px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--gray);
+    max-width: 52ch;
+  }
+  .step__body strong {
+    color: var(--white);
+    font-weight: 700;
+  }
+  .step__meta {
+    margin-top: 22px;
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--gray);
+    text-transform: uppercase;
+  }
+  .step__meta span {
+    border: 1px solid var(--gray-dim);
+    padding: 5px 9px;
+  }
+  .step__meta span.hot {
+    border-color: var(--blood);
+    color: var(--blood-hot);
+  }
+
+  /* URSSAF struck form */
+  .urssaf {
+    margin-top: 70px;
+    border: 2px solid var(--white);
+    padding: 24px 22px;
+    background: var(--black);
+    max-width: 720px;
+    position: relative;
+    overflow: hidden;
+  }
+  .urssaf__head {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--gray);
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--gray-dim);
+    padding-bottom: 10px;
+    margin-bottom: 14px;
+  }
+  .urssaf__title {
+    font-family: var(--display-font);
+    font-size: 28px;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: var(--white);
+    margin-bottom: 10px;
+  }
+  .urssaf__field {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    gap: 12px;
+    padding: 9px 0;
+    border-bottom: 1px dotted var(--gray-dim);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--gray);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .urssaf__field span:last-child { color: var(--white); }
+  .urssaf__total {
+    margin-top: 14px;
+    font-family: var(--display-font);
+    font-size: 36px;
+    color: var(--white);
+    letter-spacing: 0.02em;
+  }
+  .urssaf__cross {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+  .urssaf__cross::before,
+  .urssaf__cross::after {
+    content: "";
+    position: absolute;
+    background: var(--blood);
+    height: 8px;
+    width: 130%;
+    left: -15%;
+    top: 50%;
+  }
+  .urssaf__cross::before { transform: rotate(7deg); }
+  .urssaf__cross::after  { transform: rotate(-7deg); }
+  .urssaf__stamp {
+    position: absolute;
+    right: 14px;
+    bottom: 14px;
+    color: var(--blood-hot);
+    border: 2.5px solid var(--blood-hot);
+    padding: 8px 14px;
+    font-family: var(--display-font);
+    font-size: 22px;
+    letter-spacing: 0.08em;
+    transform: rotate(-8deg);
+    background: var(--black);
+    text-transform: uppercase;
+  }
+
+  /* ========== CALCULATOR ========== */
+  .calc {
+    background: var(--black);
+    padding: 80px 20px 100px;
+    border-bottom: 4px solid var(--white);
+    border-top: 4px solid var(--white);
+  }
+  .calc__title {
+    font-size: clamp(40px, 9vw, 96px);
+    max-width: 14ch;
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+  .calc__title .red { color: var(--blood-hot); }
+  .calc__lede {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: var(--gray);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 40px;
+    max-width: 60ch;
+    line-height: 1.6;
+  }
+  .calc__grid {
+    display: grid;
+    gap: 0;
+    grid-template-columns: 1fr;
+    border: 2px solid var(--white);
+    background: var(--anthracite);
+  }
+  .calc__inputs {
+    padding: 28px 24px;
+    border-bottom: 2px solid var(--white);
+    display: grid;
+    gap: 28px;
+  }
+  .calc__field {
+    display: grid;
+    gap: 12px;
+  }
+  .calc__field label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    flex-wrap: wrap;
+    gap: 8px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gray);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  .calc__field label .val {
+    font-family: var(--display-font);
+    font-size: clamp(22px, 5vw, 32px);
+    color: var(--white);
+    letter-spacing: 0.01em;
+    line-height: 1;
+    white-space: nowrap;
+  }
+  .calc__field label .val .red { color: var(--blood-hot); }
+  .calc__slider {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 100%;
+    height: 4px;
+    background: var(--gray-dim);
+    outline: none;
+    border-radius: 0;
+  }
+  .calc__slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 28px;
+    background: var(--blood);
+    border: 2px solid var(--white);
+    border-radius: 0;
+    cursor: pointer;
+  }
+  .calc__slider::-moz-range-thumb {
+    width: 18px;
+    height: 28px;
+    background: var(--blood);
+    border: 2px solid var(--white);
+    border-radius: 0;
+    cursor: pointer;
+  }
+  .calc__scale {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--gray-dim);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  .calc__output {
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    background: var(--black);
+  }
+  .calc__cell {
+    padding: 24px 24px;
+    border-bottom: 1px solid var(--gray-dim);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+  }
+  .calc__cell:last-child { border-bottom: none; }
+  .calc__cell--big {
+    background: var(--blood);
+    border-bottom: none;
+    padding: 32px 24px;
+  }
+  .calc__cell-lbl {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--gray);
+    text-transform: uppercase;
+  }
+  .calc__cell--big .calc__cell-lbl { color: rgba(255,255,255,0.7); }
+  .calc__cell-val {
+    font-family: var(--display-font);
+    font-size: clamp(28px, 6vw, 44px);
+    color: var(--white);
+    letter-spacing: 0.01em;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+  .calc__cell-val.red { color: var(--blood); }
+  .calc__cell--big .calc__cell-val {
+    font-size: clamp(48px, 11vw, 88px);
+  }
+  .calc__verdict {
+    margin-top: 32px;
+    padding: 22px;
+    border: 2px solid var(--blood);
+    background: var(--black);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.05em;
+    color: var(--white);
+    text-transform: uppercase;
+    line-height: 1.7;
+    max-width: 920px;
+  }
+  .calc__verdict .red { color: var(--blood-hot); font-weight: 700; }
+
+  .calc__cell-stack {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+  }
+  .calc__cell-sub {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    color: var(--gray-dim);
+    text-transform: uppercase;
+  }
+
+  .calc__statement {
+    margin-top: 60px;
+    padding-top: 40px;
+    border-top: 4px solid var(--white);
+    max-width: 1100px;
+  }
+  .calc__statement-title {
+    font-family: var(--display-font);
+    font-size: clamp(36px, 7vw, 80px);
+    line-height: 0.95;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    color: var(--white);
+    margin-bottom: 24px;
+    max-width: 18ch;
+  }
+  .calc__statement-sub {
+    font-family: var(--display-font);
+    font-size: clamp(20px, 3.5vw, 32px);
+    line-height: 1.05;
+    text-transform: uppercase;
+    color: var(--blood-hot);
+    letter-spacing: 0.005em;
+    margin-bottom: 28px;
+    max-width: 24ch;
+  }
+  .calc__statement-source {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--gray);
+    text-transform: uppercase;
+    line-height: 1.6;
+    border-top: 1px solid var(--gray-dim);
+    padding-top: 14px;
+  }
+
+  /* ========== TESTIMONIALS ========== */
+  .verbatim {
+    background: var(--anthracite);
+    padding: 90px 20px 110px;
+    border-bottom: 4px solid var(--white);
+  }
+  .verbatim__title {
+    font-size: clamp(40px, 9vw, 96px);
+    max-width: 16ch;
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+  .verbatim__title .red { color: var(--blood-hot); }
+  .verbatim__sub {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--gray);
+    text-transform: uppercase;
+    margin-bottom: 50px;
+    line-height: 1.6;
+  }
+  .verbatim__grid {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: 1fr;
+  }
+  .deposition {
+    border: 2px solid var(--white);
+    background: var(--black);
+    padding: 0;
+    position: relative;
+  }
+  .deposition__head {
+    border-bottom: 2px solid var(--white);
+    padding: 14px 18px;
+    display: flex;
+    justify-content: space-between;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--gray);
+    text-transform: uppercase;
+  }
+  .deposition__head strong { color: var(--white); font-weight: 700; }
+  .deposition__body {
+    padding: 24px 22px 22px;
+  }
+  .deposition__quote {
+    font-family: var(--display-font);
+    font-size: clamp(20px, 3.6vw, 28px);
+    line-height: 1.15;
+    text-transform: uppercase;
+    color: var(--white);
+    letter-spacing: 0.005em;
+  }
+  .deposition__quote .red { color: var(--blood-hot); }
+  .deposition__meta {
+    margin-top: 24px;
+    border-top: 1px dashed var(--gray-dim);
+    padding-top: 14px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gray);
+  }
+  .deposition__meta strong { color: var(--white); display: block; font-weight: 700; margin-bottom: 3px; }
+  .deposition__seal {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    border: 1.5px solid var(--blood-hot);
+    color: var(--blood-hot);
+    padding: 4px 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    transform: rotate(3deg);
+    text-transform: uppercase;
+    background: var(--black);
+    z-index: 2;
+  }
+
+  @media (min-width: 768px) {
+    .calc { padding: 120px 48px; }
+    .calc__grid { grid-template-columns: 1.1fr 1fr; }
+    .calc__inputs { border-bottom: none; border-right: 2px solid var(--white); padding: 36px 32px; }
+    .verbatim { padding: 120px 48px; }
+    .verbatim__grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (min-width: 1100px) {
+    .calc { padding: 140px 72px; }
+    .verbatim { padding: 140px 72px; }
+  }
+
+  /* ========== SECTION 4 — ULTIMATUM ========== */
+  .ultimatum {
+    background: var(--black);
+    padding: 90px 20px 60px;
+  }
+  .ult__title {
+    font-size: clamp(56px, 14vw, 180px);
+    margin-bottom: 60px;
+    line-height: 1;
+  }
+  .options {
+    display: grid;
+    gap: 16px;
+    max-width: 1100px;
+  }
+  .option {
+    border: 2px solid var(--gray-dim);
+    padding: 24px 22px;
+    transition: all 0.15s linear;
+  }
+  .option__tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--gray);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .option--a { background: transparent; }
+  .option--a .option__title {
+    font-family: var(--display-font);
+    text-transform: uppercase;
+    color: var(--gray);
+    font-size: clamp(20px, 3.5vw, 28px);
+    line-height: 1.1;
+    letter-spacing: 0.02em;
+  }
+  .option--a .option__title .strike {
+    text-decoration: line-through;
+    text-decoration-color: var(--blood);
+    text-decoration-thickness: 3px;
+  }
+
+  .option--b {
+    border-color: var(--white);
+    background: var(--white);
+    color: var(--black);
+  }
+  .option--b .option__tag { color: var(--gray-dim); }
+  .option--b .option__title {
+    font-family: var(--display-font);
+    text-transform: uppercase;
+    color: var(--black);
+    font-size: clamp(36px, 8vw, 72px);
+    line-height: 0.92;
+    letter-spacing: 0.005em;
+    margin-bottom: 22px;
+  }
+  .option--b .btn {
+    margin-top: 4px;
+  }
+
+  /* Footer */
+  .foot {
+    margin-top: 80px;
+    border-top: 2px solid var(--white);
+    padding-top: 30px;
+    display: grid;
+    gap: 24px;
+    grid-template-columns: 1fr;
+  }
+  .foot__brand {
+    font-family: var(--display-font);
+    font-size: clamp(60px, 16vw, 200px);
+    line-height: 0.85;
+    letter-spacing: -0.01em;
+  }
+  .foot__brand .dot { color: var(--blood-hot); }
+  .foot__meta {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--gray);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    border-top: 1px solid var(--gray-dim);
+    padding-top: 18px;
+  }
+  .foot__meta div strong { color: var(--white); display: block; margin-bottom: 4px; font-weight: 700; }
+  .foot__legal {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--gray-dim);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    border-top: 1px solid var(--gray-dim);
+    padding-top: 16px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .foot__legal .red { color: var(--blood-hot); }
+
+  /* ========== ANIMATIONS ========== */
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+  .reveal.in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ticker__track { animation: none; }
+    .warning .blink { animation: none; opacity: 1; }
+    .reveal { opacity: 1; transform: none; transition: none; }
+  }
+
+  /* ========== TABLET / DESKTOP ========== */
+  @media (min-width: 768px) {
+    .choc { padding: 40px 48px 60px; }
+    .miroir, .scalpel, .ultimatum { padding-left: 48px; padding-right: 48px; }
+
+    .invoice__row {
+      grid-template-columns: auto 1fr auto;
+      padding: 26px 28px;
+    }
+    .invoice__head, .invoice__foot { padding: 18px 28px; }
+
+    .steps {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .step {
+      border-bottom: none;
+      border-right: 2px solid var(--white);
+    }
+    .step:last-child { border-right: none; }
+
+    .options {
+      grid-template-columns: 1fr 2fr;
+      align-items: stretch;
+    }
+    .option { padding: 32px; }
+
+    .foot__meta {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  @media (min-width: 1100px) {
+    .choc { padding: 56px 72px 80px; }
+    .miroir, .scalpel, .ultimatum { padding: 120px 72px; }
+    .ultimatum { padding-bottom: 60px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TICKER -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker__track">
+    <span class="red">● EN DIRECT</span>
+    <span>CHARGES PATRONALES : 42% DU BRUT FACIAL — URSSAF 2025</span>
+    <span class="red">●</span>
+    <span>538 433 RUPTURES CONVENTIONNELLES HOMOLOGUÉES EN 2024 — DARES</span>
+    <span class="red">●</span>
+    <span>SMIC 2026 : 1 823,03 € BRUT — +1,18% AU 1ER JANVIER</span>
+    <span class="red">●</span>
+    <span>PRUD'HOMMES : 16 MOIS DE DÉLAI MOYEN — 1ÈRE INSTANCE 2024</span>
+    <span class="red">●</span>
+    <span>VOTRE MARGE NETTE : −0,4% CE MOIS</span>
+    <span class="red">●</span>
+    <!-- duplicate for seamless loop -->
+    <span class="red">● EN DIRECT</span>
+    <span>CHARGES PATRONALES : 42% DU BRUT FACIAL — URSSAF 2025</span>
+    <span class="red">●</span>
+    <span>538 433 RUPTURES CONVENTIONNELLES HOMOLOGUÉES EN 2024 — DARES</span>
+    <span class="red">●</span>
+    <span>SMIC 2026 : 1 823,03 € BRUT — +1,18% AU 1ER JANVIER</span>
+    <span class="red">●</span>
+    <span>PRUD'HOMMES : 16 MOIS DE DÉLAI MOYEN — 1ÈRE INSTANCE 2024</span>
+    <span class="red">●</span>
+    <span>VOTRE MARGE NETTE : −0,4% CE MOIS</span>
+    <span class="red">●</span>
+  </div>
+</div>
+
+<!-- ============================== -->
+<!-- SECTION 1 — CHOC                -->
+<!-- ============================== -->
+<section class="choc" data-screen-label="01 Choc">
+  <div class="brand">
+    <div class="brand__logo">AFFRANCHI<span style="color:var(--blood-hot)">.CO</span></div>
+    <div class="brand__meta">
+      DOSSIER № 2026/<span style="color:var(--white)">04—117</span><br />
+      CONFIDENTIEL · DIRIGEANT
+    </div>
+  </div>
+
+  <div>
+    <div class="warning">
+      <span class="blink">AVERTISSEMENT AUX DIRIGEANTS DE PME</span>
+    </div>
+
+    <h1 class="display choc__title">
+      VOTRE BOÎTE<br />
+      VOUS <span class="strike">ÉCRASE</span>.
+    </h1>
+
+    <p class="choc__sub">
+      LES CHARGES<span class="punct">.</span>
+      L'URSSAF<span class="punct">.</span>
+      LA MASSE SALARIALE QUI NE PRODUIT PLUS<span class="punct">.</span><br />
+      <span class="gray">— — —</span><br />
+      <strong>L'IA NE FAIT PAS GRÈVE.</strong>
+      <span class="punct">ELLE EXÉCUTE.</span>
+    </p>
+
+    <div class="cta-row">
+      <a href="#ultimatum" class="btn btn--block">JE M'AFFRANCHIS</a>
+      <a href="#miroir" class="btn btn--ghost">↓ DESCENDRE</a>
+    </div>
+  </div>
+
+  <div class="scroll-cue">
+    <span>04 SECTIONS</span>
+    <span class="scroll-cue__line"></span>
+    <span>SCROLL ↓</span>
+  </div>
+</section>
+
+<!-- ============================== -->
+<!-- SECTION 2 — LE MIROIR           -->
+<!-- ============================== -->
+<section class="miroir" id="miroir" data-screen-label="02 Miroir">
+  <div class="section-tag">SECTION 02 — LE MIROIR</div>
+
+  <h2 class="display miroir__title">
+    CE QUE VOUS SUBISSEZ<br />
+    <span class="red">CHAQUE MOIS</span><span class="red">.</span>
+  </h2>
+
+  <div class="invoice" role="table" aria-label="Facture mensuelle">
+    <div class="invoice__head">
+      <div><strong>FACTURE MENSUELLE</strong> · CYCLE EN COURS</div>
+      <div class="stamp">IMPAYÉ</div>
+    </div>
+
+    <div class="invoice__row">
+      <div class="invoice__num">— 01</div>
+      <div class="invoice__label">
+        <span class="red">42%</span> DE CHARGES POUR DES RÉSULTATS QUI STAGNENT
+      </div>
+      <div class="invoice__amount">RÉCURRENT</div>
+    </div>
+
+    <div class="invoice__row">
+      <div class="invoice__num">— 02</div>
+      <div class="invoice__label">
+        L'ANGOISSE PERMANENTE DU RECOMMANDÉ <span class="red">PRUD'HOMMES</span>
+      </div>
+      <div class="invoice__amount">PSYCHIQUE</div>
+    </div>
+
+    <div class="invoice__row">
+      <div class="invoice__num">— 03</div>
+      <div class="invoice__label">
+        VOUS TRAVAILLEZ <span class="red">70H</span>
+      </div>
+      <div class="invoice__amount">HEBDO</div>
+    </div>
+
+    <div class="invoice__row">
+      <div class="invoice__num">— 04</div>
+      <div class="invoice__label">
+        VOTRE MARGE FOND. <span class="red">SANS EXCEPTION.</span>
+      </div>
+      <div class="invoice__amount">DÉFINITIF</div>
+    </div>
+
+    <div class="invoice__foot">
+      <div>TOTAL DÛ &nbsp;·&nbsp; SUR 12 MOIS</div>
+      <div class="total">VOTRE VIE.</div>
+    </div>
+  </div>
+
+  <!-- Collapsing margin chart -->
+  <div class="chart-block">
+    <div class="chart-block__head">
+      <div class="chart-block__title">MARGE NETTE / 24 MOIS</div>
+      <div class="chart-block__delta" id="deltaText">▼ −68,4 %</div>
+    </div>
+    <svg class="chart" viewBox="0 0 600 200" preserveAspectRatio="none" aria-hidden="true">
+      <!-- grid -->
+      <g stroke="#222" stroke-width="1">
+        <line x1="0" y1="40"  x2="600" y2="40"  />
+        <line x1="0" y1="80"  x2="600" y2="80"  />
+        <line x1="0" y1="120" x2="600" y2="120" />
+        <line x1="0" y1="160" x2="600" y2="160" />
+      </g>
+      <!-- baseline -->
+      <line x1="0" y1="180" x2="600" y2="180" stroke="#555" stroke-width="1" stroke-dasharray="4 4" />
+      <!-- labels -->
+      <text x="6"   y="14">+30%</text>
+      <text x="6"   y="54">+15%</text>
+      <text x="6"   y="174">−30%</text>
+      <text x="540" y="196">M+24</text>
+      <text x="6"   y="196">M0</text>
+      <!-- area -->
+      <path id="areaPath" d="M 0 60 L 0 60 L 0 200 Z"
+            fill="#8B0000" fill-opacity="0.18"/>
+      <!-- line -->
+      <path id="linePath" d="M 0 60"
+            fill="none" stroke="#B30000" stroke-width="2.5"
+            stroke-linecap="square" stroke-linejoin="miter"/>
+      <!-- end marker -->
+      <circle id="endDot" cx="0" cy="60" r="4" fill="#B30000"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ============================== -->
+<!-- CALCULATOR — COMBIEN ÇA COÛTE  -->
+<!-- ============================== -->
+<section class="calc" id="calc" data-screen-label="02b Calculateur">
+  <div class="section-tag">CALCUL — DIAGNOSTIC EXPRESS</div>
+
+  <h2 class="display calc__title">
+    COMBIEN VOTRE<br />
+    MASSE SALARIALE<br />
+    <span class="red">VOUS COÛTE</span><span class="red">.</span>
+  </h2>
+
+  <p class="calc__lede">
+    GLISSEZ LES CURSEURS. LES CHIFFRES PARLENT TOUT SEULS.<br />
+    AUCUNE DONNÉE STOCKÉE. PAS DE FORMULAIRE. PAS DE RAPPEL COMMERCIAL.
+  </p>
+
+  <div class="calc__grid">
+    <div class="calc__inputs">
+      <div class="calc__field">
+        <label>
+          <span>EFFECTIF SALARIÉ</span>
+          <span class="val" id="vEff">12</span>
+        </label>
+        <input type="range" min="1" max="100" value="12" class="calc__slider" id="sEff" aria-label="Effectif salarié" />
+        <div class="calc__scale"><span>1</span><span>50</span><span>100</span></div>
+      </div>
+
+      <div class="calc__field">
+        <label>
+          <span>SALAIRE BRUT MOYEN / MOIS</span>
+          <span class="val" id="vSal">3 600 €</span>
+        </label>
+        <input type="range" min="1500" max="8000" step="100" value="3600" class="calc__slider" id="sSal" aria-label="Salaire brut moyen mensuel" />
+        <div class="calc__scale"><span>1 500 €</span><span>4 750 €</span><span>8 000 €</span></div>
+      </div>
+
+      <div class="calc__field">
+        <label>
+          <span>POSTES AUTOMATISABLES</span>
+          <span class="val"><span id="vAuto">35</span><span class="red"> %</span></span>
+        </label>
+        <input type="range" min="0" max="80" value="35" class="calc__slider" id="sAuto" aria-label="Pourcentage de postes automatisables" />
+        <div class="calc__scale"><span>0 %</span><span>40 %</span><span>80 %</span></div>
+      </div>
+    </div>
+
+    <div class="calc__output">
+      <div class="calc__cell">
+        <span class="calc__cell-lbl">COÛT EMPLOYEUR / MOIS</span>
+        <div class="calc__cell-stack">
+          <span class="calc__cell-val" id="oCost">5 170 €</span>
+          <span class="calc__cell-sub">Source URSSAF 2026</span>
+        </div>
+      </div>
+      <div class="calc__cell">
+        <span class="calc__cell-lbl">DONT CHARGES PATRONALES / MOIS</span>
+        <span class="calc__cell-val red" id="oCharges">1 570 €</span>
+      </div>
+      <div class="calc__cell">
+        <span class="calc__cell-lbl">COÛT TOTAL ANNUEL</span>
+        <span class="calc__cell-val" id="oAnnual">744 422 €</span>
+      </div>
+      <div class="calc__cell calc__cell--big">
+        <span class="calc__cell-lbl">CE QUE L'IA PEUT RÉCUPÉRER / AN</span>
+        <span class="calc__cell-val" id="oRecover">260 548 €</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="calc__statement">
+    <h3 class="display calc__statement-title">
+      LES ENTREPRISES QUI UTILISENT L'IA<br />
+      GAGNENT 15% DE PERFORMANCE.
+    </h3>
+    <p class="calc__statement-sub">
+      90% DE VOS CONCURRENTS N'ONT PAS ENCORE COMMENCÉ.
+    </p>
+    <p class="calc__statement-source">
+      Source : McKinsey State of AI 2024 · INSEE Première n°2061, juillet 2025
+    </p>
+  </div>
+</section>
+
+<!-- ============================== -->
+<!-- SECTION 3 — LE SCALPEL          -->
+<!-- ============================== -->
+<section class="scalpel" id="scalpel" data-screen-label="03 Scalpel">
+  <div class="section-tag">SECTION 03 — LE SCALPEL</div>
+
+  <h2 class="display scalpel__title">
+    LA MÉTHODE<span class="red-dot">.</span><br />
+    3 ÉTAPES<span class="red-dot">.</span>
+  </h2>
+
+  <div class="steps">
+    <article class="step">
+      <div class="step__num">01</div>
+      <div class="step__label">L'AUDIT</div>
+      <div class="step__sep"></div>
+      <p class="step__body">
+        On cartographie votre PME. Chaque poste, chaque process. Froid. Chiffré. Sans opinion.
+      </p>
+      <div class="step__meta">
+        <span class="hot">RAPPORT BRUT</span>
+      </div>
+    </article>
+
+    <article class="step">
+      <div class="step__num">02</div>
+      <div class="step__label">L'AUTOMATISATION</div>
+      <div class="step__sep"></div>
+      <p class="step__body">
+        Agents IA déployés. Support, admin, tâches répétitives : pris en charge. 24h/24. 365 jours. Zéro charge. Zéro arrêt maladie.
+      </p>
+      <div class="step__meta">
+        <span class="hot">DÉPLOIEMENT</span>
+      </div>
+    </article>
+
+    <article class="step">
+      <div class="step__num">03</div>
+      <div class="step__label">LA TRANSITION RH</div>
+      <div class="step__sep"></div>
+      <p class="step__body">
+        Avocats partenaires. Ruptures conventionnelles, plans de départ, négociations cadrées. Légal. Propre. Définitif.
+      </p>
+      <div class="step__meta">
+        <span class="hot">ZÉRO PRUD'HOMMES</span>
+      </div>
+    </article>
+  </div>
+
+  <!-- URSSAF struck form -->
+  <div class="urssaf" aria-label="Formulaire URSSAF barré">
+    <div class="urssaf__head">
+      <span>FORMULAIRE DSN — DÉCLARATION SOCIALE NOMINATIVE</span>
+      <span>2026 / T2</span>
+    </div>
+    <div class="urssaf__title">COTISATIONS &amp; CHARGES PATRONALES</div>
+    <div class="urssaf__field"><span>Salaire brut</span><span>48 000 €</span></div>
+    <div class="urssaf__field"><span>Sécu (Mal/Vie/Fam/AT)</span><span>14 880 €</span></div>
+    <div class="urssaf__field"><span>Retraite + Chômage</span><span>4 306 €</span></div>
+    <div class="urssaf__field"><span>Formation / FNAL</span><span>1 100 €</span></div>
+    <div class="urssaf__total">COÛT EMPLOYEUR — 68&nbsp;286 €</div>
+    <div class="urssaf__cross"></div>
+    <div class="urssaf__stamp">SUPPRIMÉ</div>
+  </div>
+</section>
+
+<!-- ============================== -->
+<!-- TESTIMONIALS — VERBATIM         -->
+<!-- ============================== -->
+<section class="verbatim" id="verbatim" data-screen-label="03b Verbatim">
+  <div class="section-tag">DÉPOSITIONS — VERBATIM ANONYMISÉ</div>
+
+  <h2 class="display verbatim__title">
+    PAROLES DE<br />
+    DIRIGEANTS <span class="red">AFFRANCHIS</span><span class="red">.</span>
+  </h2>
+
+  <p class="verbatim__sub">
+    EXTRAITS DE COMPTES-RENDUS — IDENTITÉS SOUS NDA<br />
+    VERSIONS INTÉGRALES SUR DEMANDE DOSSIER
+  </p>
+
+  <div class="verbatim__grid">
+    <article class="deposition">
+      <div class="deposition__seal">PIÈCE 01</div>
+      <div class="deposition__head">
+        <span>DÉPOSITION №&nbsp;<strong>2025/118</strong></span>
+        <span>DURÉE 47 MIN</span>
+      </div>
+      <div class="deposition__body">
+        <p class="deposition__quote">
+          « JE PAYAIS <span class="red">4 PERSONNES</span> POUR FAIRE LE TRAVAIL QU'UN AGENT FAIT EN 90 SECONDES. J'AI HONTE D'AVOIR ATTENDU 11 ANS. »
+        </p>
+        <div class="deposition__meta">
+          <div><strong>SECTEUR</strong>BTP — SECOND ŒUVRE</div>
+          <div><strong>EFFECTIF</strong>22 → 14 ETP</div>
+          <div><strong>RÉGION</strong>RHÔNE-ALPES</div>
+          <div><strong>MARGE</strong>+18 PTS / 9 MOIS</div>
+        </div>
+      </div>
+    </article>
+
+    <article class="deposition">
+      <div class="deposition__seal">PIÈCE 02</div>
+      <div class="deposition__head">
+        <span>DÉPOSITION №&nbsp;<strong>2025/204</strong></span>
+        <span>DURÉE 32 MIN</span>
+      </div>
+      <div class="deposition__body">
+        <p class="deposition__quote">
+          « LA PEUR DU RECOMMANDÉ M'EMPÊCHAIT DE DORMIR. AUJOURD'HUI <span class="red">JE DORS.</span> ET JE GAGNE DE L'ARGENT. »
+        </p>
+        <div class="deposition__meta">
+          <div><strong>SECTEUR</strong>SERVICES B2B</div>
+          <div><strong>EFFECTIF</strong>38 → 24 ETP</div>
+          <div><strong>RÉGION</strong>ÎLE-DE-FRANCE</div>
+          <div><strong>EBITDA</strong>×&nbsp;2,4</div>
+        </div>
+      </div>
+    </article>
+
+    <article class="deposition">
+      <div class="deposition__seal">PIÈCE 03</div>
+      <div class="deposition__head">
+        <span>DÉPOSITION №&nbsp;<strong>2026/039</strong></span>
+        <span>DURÉE 51 MIN</span>
+      </div>
+      <div class="deposition__body">
+        <p class="deposition__quote">
+          « ON M'AVAIT DIT QUE C'ÉTAIT IMPOSSIBLE. EN 21 JOURS LE SUPPORT TOURNAIT SEUL. <span class="red">ZÉRO PRUD'HOMMES.</span> »
+        </p>
+        <div class="deposition__meta">
+          <div><strong>SECTEUR</strong>E-COMMERCE</div>
+          <div><strong>EFFECTIF</strong>17 → 9 ETP</div>
+          <div><strong>RÉGION</strong>OCCITANIE</div>
+          <div><strong>SUPPORT</strong>24/7 IA</div>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ============================== -->
+<!-- SECTION 4 — ULTIMATUM           -->
+<!-- ============================== -->
+<section class="ultimatum" id="ultimatum" data-screen-label="04 Ultimatum">
+  <div class="section-tag">SECTION 04 — L'ULTIMATUM</div>
+
+  <h2 class="display ult__title">DEUX OPTIONS.</h2>
+
+  <div class="options">
+    <div class="option option--a">
+      <div class="option__tag">
+        <span>OPTION A</span>
+        <span>— STATUT QUO</span>
+      </div>
+      <div class="option__title">
+        Fermez cette page.<br />
+        <span class="strike">Retournez payer vos charges.</span>
+      </div>
+    </div>
+
+    <div class="option option--b">
+      <div class="option__tag">
+        <span>OPTION B</span>
+        <span>— L'AFFRANCHISSEMENT</span>
+      </div>
+      <div class="option__title">
+        Reprenez le contrôle.
+      </div>
+      <a href="#contact" class="btn btn--block" id="finalCta">PLANIFIER MON AFFRANCHISSEMENT</a>
+    </div>
+  </div>
+
+  <div class="foot">
+    <div class="foot__brand">AFFRANCHI<span class="dot">.</span></div>
+    <div class="foot__meta">
+      <div><strong>CONTACT</strong>contact@affranchi.co</div>
+      <div><strong>DOSSIER</strong>+33 1 XX XX XX XX</div>
+      <div><strong>CONFIDENTIALITÉ</strong>NDA — STANDARD</div>
+      <div><strong>SIRET</strong>EN COURS · 2026</div>
+    </div>
+    <div class="foot__legal">
+      <span>© 2026 AFFRANCHI.CO — TOUS DROITS RÉSERVÉS</span>
+      <span>CECI N'EST PAS UNE PUBLICITÉ. C'EST UN <span class="red">DIAGNOSTIC</span>.</span>
+    </div>
+  </div>
+</section>
+
+<script>
+  // ====== Reveal on scroll ======
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // ====== Collapsing chart animation ======
+  const linePath = document.getElementById('linePath');
+  const areaPath = document.getElementById('areaPath');
+  const endDot   = document.getElementById('endDot');
+  const deltaTxt = document.getElementById('deltaText');
+
+  // 25 monthly samples — slight rises, then accelerating decay
+  const samples = [
+    60, 58, 62, 59, 64, 60, 66, 63, 68, 65,
+    72, 70, 78, 84, 88, 96, 104, 116, 128, 140,
+    150, 162, 172, 182, 188
+  ];
+  const W = 600, H = 200;
+  const maxY = 195;
+  const points = samples.map((v, i) => {
+    const x = (i / (samples.length - 1)) * W;
+    const y = Math.min(v, maxY);
+    return [x, y];
+  });
+
+  function buildPath(progress) {
+    const count = Math.max(2, Math.floor(progress * points.length));
+    const pts = points.slice(0, count);
+    let d = `M ${pts[0][0]} ${pts[0][1]}`;
+    for (let i = 1; i < pts.length; i++) {
+      d += ` L ${pts[i][0]} ${pts[i][1]}`;
+    }
+    return { d, last: pts[pts.length - 1] };
+  }
+
+  function buildArea(d, last) {
+    return `${d} L ${last[0]} ${H} L 0 ${H} Z`;
+  }
+
+  let chartAnimated = false;
+  const chartBlock = document.querySelector('.chart-block');
+  const chartIo = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting && !chartAnimated) {
+        chartAnimated = true;
+        const start = performance.now();
+        const dur = 1800;
+        function tick(now) {
+          const t = Math.min(1, (now - start) / dur);
+          const eased = 1 - Math.pow(1 - t, 3);
+          const { d, last } = buildPath(eased);
+          linePath.setAttribute('d', d);
+          areaPath.setAttribute('d', buildArea(d, last));
+          endDot.setAttribute('cx', last[0]);
+          endDot.setAttribute('cy', last[1]);
+          const pct = -(eased * 68.4);
+          deltaTxt.textContent = `▼ ${pct.toFixed(1).replace('.', ',')} %`;
+          if (t < 1) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+      }
+    });
+  }, { threshold: 0.4 });
+  chartIo.observe(chartBlock);
+
+  // ====== Calculator ======
+  const sEff = document.getElementById('sEff');
+  const sSal = document.getElementById('sSal');
+  const sAuto = document.getElementById('sAuto');
+  const vEff = document.getElementById('vEff');
+  const vSal = document.getElementById('vSal');
+  const vAuto = document.getElementById('vAuto');
+  const oCost = document.getElementById('oCost');
+  const oCharges = document.getElementById('oCharges');
+  const oAnnual = document.getElementById('oAnnual');
+  const oRecover = document.getElementById('oRecover');
+
+  function fmt(n) {
+    return Math.round(n).toLocaleString('fr-FR').replace(/ /g, ' ').replace(/,/g, ' ') + ' €';
+  }
+
+  function calc() {
+    const eff = +sEff.value;
+    const sal = +sSal.value;
+    const auto = +sAuto.value;
+    // Coefficient charges patronales 0.436 — base employeur tous frais inclus (URSSAF 2026 + AGIRC-ARRCO + chômage + frais annexes)
+    const costMonth = sal * 1.436;          // coût employeur / mois (par salarié)
+    const chargesMonth = sal * 0.436;       // dont charges patronales / mois (par salarié)
+    const annual = costMonth * 12 * eff;    // coût total annuel (entreprise)
+    const recover = annual * (auto / 100);  // ce que l'IA peut récupérer / an
+    vEff.textContent = eff;
+    vSal.textContent = fmt(sal);
+    vAuto.textContent = auto;
+    oCost.textContent = fmt(costMonth);
+    oCharges.textContent = fmt(chargesMonth);
+    oAnnual.textContent = fmt(annual);
+    oRecover.textContent = fmt(recover);
+  }
+  [sEff, sSal, sAuto].forEach(s => s.addEventListener('input', calc));
+  calc();
+
+  // ====== CTA white-shadow on hover ======
+  document.querySelectorAll('.btn').forEach(btn => {
+    btn.addEventListener('mouseenter', () => {
+      btn.style.boxShadow = '6px 6px 0 0 #FFFFFF';
+    });
+    btn.addEventListener('mouseleave', () => {
+      btn.style.boxShadow = 'none';
+    });
+  });
+
+  // ====== Final CTA: brief shake + confirmation ======
+  document.getElementById('finalCta').addEventListener('click', (e) => {
+    e.preventDefault();
+    const t = e.currentTarget;
+    t.animate([
+      { transform: 'translate(0,0)' },
+      { transform: 'translate(-4px, 2px)' },
+      { transform: 'translate(4px, -2px)' },
+      { transform: 'translate(-2px, 1px)' },
+      { transform: 'translate(0,0)' }
+    ], { duration: 280, easing: 'steps(4, end)' });
+    t.textContent = 'DOSSIER OUVERT — CONFIRMATION PAR EMAIL';
+    t.style.background = '#000';
+    t.style.color = '#fff';
+    t.style.border = '2px solid #fff';
+  });
+</script>
+
+</body>
+</html>

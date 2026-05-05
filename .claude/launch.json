@@ -1,0 +1,23 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "Live Server (auto-reload)",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["-y", "live-server", "--port=5500", "--no-browser", "--entry-file=AFFRANCHI.html"],
+      "port": 5500
+    },
+    {
+      "name": "Serve (npx serve)",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["-y", "serve", "-l", "5173", "."],
+      "port": 5173
+    },
+    {
+      "name": "Python http.server",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "8000"],
+      "port": 8000
+    }
+  ]
+}
