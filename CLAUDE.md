@@ -79,6 +79,33 @@ Pas de « done » sans preuve concrète.
 - **Règle dérivée** : si un titre Anton multi-lignes contient un mot avec **diacritique haut** (`Ô`, `Î`, `Â`, `Ê`, `É`, `À`, `Ù`, etc.) sur une ligne ≥ 2, **plancher `line-height` à `1.05`–`1.1`** (pas `0.92` ni `1.0` qui suffisent pour des lignes 100% capitales sans accent). Anton a des line metrics compactes qui n'incluent pas la marge des accents.
 - **Détecteur préventif** : grep le contenu HTML d'un titre pour les caractères `Ô|Î|Â|Ê|É|À|Ù|Ç` ; si présent + `line-height: 1` ou moins → bumper à `1.08`.
 
+### 2026-05-05 · INTERDICTION D'INVENTER — chiffres, anecdotes, citations (règle GLOBALE)
+- **Erreur** : Pendant le brainstorm de tweets pour @Nolenswaffles (compte X de l'utilisateur), j'ai proposé un tweet *« Je viens de finir un audit dans une PME de 22 salariés, sur 1,2 M€ de masse salariale, 510 k€ partent en charges... »*. L'utilisateur n'a **aucun client** à ce stade. Inventer un audit hypothétique = fake, dégrade la crédibilité, peut être démontable publiquement. L'utilisateur a coupé immédiatement.
+- **Règle dérivée — s'applique à TOUT contenu AFFRANCHI publié** (tweets, copy landing, emails, threads, comments, captions) :
+  - **JAMAIS** d'anecdote inventée du type « j'ai vu », « un client m'a dit », « cas que j'ai accompagné », « hier au tel ». Si l'anecdote ne correspond pas à un vécu **vérifiable** de l'utilisateur (Willy / @Nolenswaffles), elle est interdite.
+  - **JAMAIS** de chiffres inventés ou estimés au doigt mouillé. Tout chiffre publié doit être :
+    1. soit issu de la table **« Sources données officielles »** de ce fichier (URSSAF, INSEE, DARES, etc.)
+    2. soit calculé **étape par étape** avec sources citées et coefficient justifié
+    3. soit issu d'un **cas international public sourcé** (ex: Klarna communiqué 27/02/2024, mémo Tobi Lütke avril 2025) avec citation exacte
+    4. soit issu d'un **vécu personnel confirmé par l'utilisateur dans le chat** (montants validés avant publication)
+  - **JAMAIS** de citation reformulée — toujours la quote exacte avec date et source.
+- **Détecteur préventif** : avant de proposer un contenu avec un chiffre ou une anecdote, se poser : « Est-ce que ce chiffre est dans la table sources, ou est-ce que l'utilisateur me l'a donné dans le chat, ou est-ce que c'est une stat publique sourcée ? » Si non aux 3 → STOP, demander à l'utilisateur le vrai chiffre.
+- **Cas vécu validés par l'utilisateur (à utiliser librement dans tweets/copy)** :
+  - **Anecdote 1** : avant l'IA dans une de ses anciennes boîtes, 2 secrétaires à plein temps à 1 600 € net chacune (~67 k€/an chargés) pour trier mails / classer PDF / reformater Excel. Aujourd'hui ces flux = ~150 €/mois en agent IA. Delta ~65 k€/an.
+  - **Anecdote 2** : co-dirigeant (avec 2 associés) d'une boîte de 150 personnes en France + 200 télémarketeurs au Maroc. En France, 4 personnes à plein temps écoutaient les calls de téléprospection et qualifiaient les leads (~100 k€/an chargés sur ce poste). Aujourd'hui ce travail = transcription IA + prompt de qualification ~175 €/mois. Delta ~98 k€/an sur le poste qualification.
+
+### 2026-05-05 · URSSAF — coefficient charges varie selon niveau de salaire
+- **Erreur** : J'ai utilisé le coefficient × 1,436 (URSSAF facial moyen de la calculette landing) pour un cas individuel à 1,12 SMIC (secrétaire à 1 600 € net ≈ 2 050 € brut). Résultat : ~70 700 €/an annoncé pour 2 secrétaires sur l'année. L'utilisateur a challengé. Vérification : à 1,0-1,3 SMIC, les **allègements généraux** (anciennement Fillon, désormais RGCT/RGDU) réduisent les cotisations patronales URSSAF de ~30 %, ce qui ramène le coefficient effectif à ~× 1,32 à 1,38 (et non 1,436). Vrai chiffre : ~67 k€/an.
+- **Règle dérivée** :
+  - **Le × 1,436 reste valable pour le calculateur de la landing** (qui simule autour du salaire moyen privé EQTP à 3 602 € brut ≈ 2 SMIC, en zone d'allègements quasi nulle).
+  - **Pour des cas individuels publiés < 1,6 SMIC** (≈ 2 917 € brut/mois en 2026), le coefficient effectif est plus faible :
+    - 1,0 SMIC (≈ 1 823 €) : ~× 1,16–1,22 (allègements maximaux)
+    - 1,2 SMIC (≈ 2 188 €) : ~× 1,32–1,38
+    - 1,5 SMIC (≈ 2 735 €) : ~× 1,40
+    - ≥ 1,6 SMIC (≈ 2 917 €) : ~× 1,42–1,46 (allègements quasi-nuls)
+  - **Toujours préciser dans un contenu publié** quel coefficient on utilise et indiquer si on est en zone d'allègements (mention « après allègements URSSAF » ou « facial sans allègements »).
+- **Source** : [URSSAF — Réduction générale des cotisations patronales](https://www.urssaf.fr/accueil/employeur/calculer-cotisations/exonerations-aides-emploi/reduction-generale.html)
+
 ---
 
 ## Conventions de cette codebase
