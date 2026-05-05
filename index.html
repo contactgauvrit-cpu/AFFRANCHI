@@ -855,6 +855,96 @@
     z-index: 2;
   }
 
+  /* PIÈCE MAÎTRESSE — featured deposition (Gallagher / Medvi) */
+  .deposition--featured {
+    margin-bottom: 40px;
+    border: 4px solid var(--white);
+    background: var(--black);
+    position: relative;
+    overflow: hidden;
+  }
+  .deposition--featured .deposition__seal {
+    background: var(--blood);
+    color: var(--white);
+    border-color: var(--blood);
+    font-size: 10px;
+    padding: 6px 12px;
+    transform: rotate(-3deg);
+    top: 16px;
+    right: 16px;
+  }
+  .deposition--featured__body {
+    padding: 32px 24px;
+  }
+  .deposition--featured .deposition__quote {
+    font-size: clamp(26px, 5.2vw, 48px);
+    line-height: 1.04;
+    margin-bottom: 32px;
+    letter-spacing: -0.005em;
+    max-width: 22ch;
+  }
+  .featured__grid {
+    border-top: 2px solid var(--white);
+    border-bottom: 2px solid var(--white);
+    margin: 24px 0 28px;
+  }
+  .featured__row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4px;
+    padding: 14px 0;
+    border-bottom: 1px dotted var(--gray-dim);
+    align-items: baseline;
+  }
+  .featured__row:last-child { border-bottom: none; }
+  .featured__lbl {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--gray);
+    text-transform: uppercase;
+  }
+  .featured__val {
+    font-family: var(--display-font);
+    font-size: clamp(20px, 3.4vw, 30px);
+    letter-spacing: 0.01em;
+    color: var(--white);
+    text-transform: uppercase;
+    line-height: 1;
+  }
+  .featured__val.red { color: var(--blood-hot); }
+  .featured__verdict {
+    font-family: var(--display-font);
+    font-size: clamp(22px, 4.2vw, 36px);
+    text-transform: uppercase;
+    color: var(--white);
+    line-height: 1.1;
+    border-left: 4px solid var(--blood);
+    padding-left: 18px;
+    margin: 28px 0 22px;
+    letter-spacing: 0.005em;
+  }
+  .featured__attrib {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--gray);
+    margin-top: 14px;
+    text-transform: uppercase;
+    line-height: 1.5;
+  }
+  .featured__source {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    color: var(--gray-dim);
+    text-transform: uppercase;
+    border-top: 1px solid var(--gray-dim);
+    padding-top: 14px;
+    margin-top: 8px;
+  }
+
   @media (min-width: 768px) {
     .calc { padding: 120px 48px; }
     .calc__grid { grid-template-columns: 1.1fr 1fr; }
@@ -1349,17 +1439,78 @@
 <!-- TESTIMONIALS — VERBATIM         -->
 <!-- ============================== -->
 <section class="verbatim" id="verbatim" data-screen-label="03b Verbatim">
-  <div class="section-tag">DÉPOSITIONS — VERBATIM ANONYMISÉ</div>
+  <div class="section-tag">DOSSIER À CHARGE — IA EN OPÉRATION</div>
 
   <h2 class="display verbatim__title">
-    PAROLES DE<br />
-    DIRIGEANTS <span class="red">AFFRANCHIS</span><span class="red">.</span>
+    VOILÀ CE QUE L'IA<br />
+    FAIT POUR EUX<span class="red">.</span><br />
+    DEMAIN POUR <span class="red">VOUS</span><span class="red">.</span>
   </h2>
 
   <p class="verbatim__sub">
-    EXTRAITS DE COMPTES-RENDUS — IDENTITÉS SOUS NDA<br />
-    VERSIONS INTÉGRALES SUR DEMANDE DOSSIER
+    UNE PIÈCE MAÎTRESSE — TROIS DÉPOSITIONS ANONYMISÉES<br />
+    CAS NOMMÉ : PRESSE PUBLIÉE · PMES SOUS NDA
   </p>
+
+  <!-- PIÈCE 00 — DOSSIER MEDVI / Matthew Gallagher -->
+  <article class="deposition deposition--featured">
+    <div class="deposition__seal">PIÈCE 00 · MAÎTRESSE</div>
+    <div class="deposition__head">
+      <span>DOSSIER №&nbsp;<strong>MEDVI / 2024–2026</strong></span>
+      <span>USA · TÉLÉSANTÉ GLP-1</span>
+    </div>
+    <div class="deposition--featured__body">
+      <h3 class="deposition__quote">
+        UN FONDATEUR. SON FRÈRE.<br />
+        <span class="red">DEUX PERSONNES.</span><br />
+        UN BUSINESS À <span class="red">1,8 Md $</span> EN 18 MOIS.
+      </h3>
+
+      <div class="featured__grid">
+        <div class="featured__row">
+          <span class="featured__lbl">DEMANDEUR</span>
+          <span class="featured__val">MATTHEW GALLAGHER · FONDATEUR & CEO MEDVI</span>
+        </div>
+        <div class="featured__row">
+          <span class="featured__lbl">CAPITAL DE DÉPART</span>
+          <span class="featured__val">20 000 $</span>
+        </div>
+        <div class="featured__row">
+          <span class="featured__lbl">EFFECTIF</span>
+          <span class="featured__val">2 PERSONNES — LUI + SON FRÈRE</span>
+        </div>
+        <div class="featured__row">
+          <span class="featured__lbl">ARSENAL IA</span>
+          <span class="featured__val">CHATGPT · CLAUDE · GROK</span>
+        </div>
+        <div class="featured__row">
+          <span class="featured__lbl">ÉQUIPE INGÉNIERIE</span>
+          <span class="featured__val red">ZÉRO — CODE GÉNÉRÉ PAR LLM</span>
+        </div>
+        <div class="featured__row">
+          <span class="featured__lbl">SUPPORT HUMAIN</span>
+          <span class="featured__val red">ZÉRO — CHATBOTS POUR 250 000+ CLIENTS</span>
+        </div>
+        <div class="featured__row">
+          <span class="featured__lbl">CHIFFRE D'AFFAIRES 2025</span>
+          <span class="featured__val">401 000 000 $</span>
+        </div>
+        <div class="featured__row">
+          <span class="featured__lbl">PROJECTION 2026</span>
+          <span class="featured__val red">1 800 000 000 $</span>
+        </div>
+      </div>
+
+      <p class="featured__verdict">
+        « Qu'est-ce que l'IA peut remplacer ? »
+        <span class="featured__attrib">— Matthew Gallagher, principe directeur de Medvi</span>
+      </p>
+
+      <p class="featured__source">
+        Source : Phemex Academy · 2025 — « Who is Matthew Gallagher »
+      </p>
+    </div>
+  </article>
 
   <div class="verbatim__grid">
     <article class="deposition">
