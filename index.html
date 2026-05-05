@@ -1118,6 +1118,136 @@
     .miroir, .scalpel, .ultimatum { padding: 120px 72px; }
     .ultimatum { padding-bottom: 60px; }
   }
+  /* ========== DOSSIER FORM ========== */
+  .dossier-form {
+    background: var(--anthracite);
+    padding: 90px 20px 100px;
+    border-bottom: 4px solid var(--white);
+  }
+  .dossier__title {
+    font-size: clamp(48px, 10vw, 120px);
+    line-height: 1.05;
+    margin-bottom: 16px;
+    max-width: 14ch;
+  }
+  .dossier__title .red { color: var(--blood-hot); }
+  .dossier__sub {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--gray);
+    text-transform: uppercase;
+    margin-bottom: 50px;
+    line-height: 1.6;
+  }
+  .dossier {
+    border: 2px solid var(--white);
+    background: var(--black);
+    padding: 28px 24px;
+    display: grid;
+    gap: 22px;
+    grid-template-columns: 1fr;
+    max-width: 920px;
+  }
+  .dossier__field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .dossier__field--full { grid-column: 1 / -1; }
+  .dossier__field label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--gray);
+    text-transform: uppercase;
+  }
+  .dossier__optional { color: var(--gray-dim); font-weight: 400; }
+  .dossier input[type="text"],
+  .dossier input[type="email"],
+  .dossier input[type="tel"],
+  .dossier select,
+  .dossier textarea {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    padding: 12px 14px;
+    background: var(--black);
+    border: 2px solid var(--gray-dim);
+    color: var(--white);
+    border-radius: 0;
+    outline: none;
+    transition: border-color 0.12s linear;
+    width: 100%;
+  }
+  .dossier input:focus,
+  .dossier select:focus,
+  .dossier textarea:focus { border-color: var(--blood-hot); }
+  .dossier input:invalid:not(:placeholder-shown),
+  .dossier select:invalid,
+  .dossier textarea:invalid:not(:placeholder-shown) {
+    border-color: var(--blood);
+  }
+  .dossier select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="%23aaaaaa"><polygon points="2,4 10,4 6,10"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    background-size: 12px;
+    padding-right: 36px;
+    cursor: pointer;
+  }
+  .dossier textarea {
+    resize: vertical;
+    min-height: 120px;
+    line-height: 1.5;
+  }
+  .dossier__honeypot {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+  .dossier__submit-row { margin-top: 6px; }
+  .dossier__submit-row .btn {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .dossier__submit-row .btn[disabled] {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+  .dossier__status {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    line-height: 1.6;
+    min-height: 0;
+    margin-top: 8px;
+  }
+  .dossier__status:empty { display: none; }
+  .dossier__status.is-success {
+    color: var(--white);
+    border-left: 4px solid var(--blood);
+    padding: 8px 0 8px 16px;
+  }
+  .dossier__status.is-error {
+    color: var(--blood-hot);
+    border-left: 4px solid var(--blood-hot);
+    padding: 8px 0 8px 16px;
+  }
+  @media (min-width: 768px) {
+    .dossier-form { padding: 120px 48px; }
+    .dossier {
+      grid-template-columns: 1fr 1fr;
+      padding: 40px 36px;
+    }
+  }
+  @media (min-width: 1100px) {
+    .dossier-form { padding: 140px 72px; }
+  }
 </style>
 </head>
 <body>
@@ -1577,7 +1707,68 @@
 <!-- ============================== -->
 <!-- SECTION 4 — ULTIMATUM           -->
 <!-- ============================== -->
-<section class="ultimatum" id="ultimatum" data-screen-label="04 Ultimatum">
+<!-- ============================== -->
+<!-- OUVERTURE DE DOSSIER — FORM     -->
+<!-- ============================== -->
+<section class="dossier-form" id="contact" data-screen-label="04 Dossier">
+  <div class="section-tag">SECTION 04 — OUVERTURE DE DOSSIER</div>
+
+  <h2 class="display dossier__title">
+    OUVRIR<br />
+    LE <span class="red">DOSSIER</span><span class="red">.</span>
+  </h2>
+
+  <p class="dossier__sub">
+    RÉPONSE SOUS 48 HEURES OUVRÉES — CONFIDENTIALITÉ NDA STANDARD<br />
+    AUCUNE LISTE COMMERCIALE · AUCUNE RÉUTILISATION
+  </p>
+
+  <form class="dossier" id="dossierForm" novalidate>
+    <div class="dossier__field">
+      <label for="f-nom">NOM COMPLET</label>
+      <input type="text" id="f-nom" name="nom" required maxlength="100" autocomplete="name" placeholder=" " />
+    </div>
+    <div class="dossier__field">
+      <label for="f-entreprise">ENTREPRISE</label>
+      <input type="text" id="f-entreprise" name="entreprise" required maxlength="200" autocomplete="organization" placeholder=" " />
+    </div>
+    <div class="dossier__field">
+      <label for="f-effectif">EFFECTIF</label>
+      <select id="f-effectif" name="effectif" required>
+        <option value="">— SÉLECTIONNER —</option>
+        <option value="1-10">1 à 10</option>
+        <option value="11-50">11 à 50</option>
+        <option value="51-200">51 à 200</option>
+        <option value="200+">200 et plus</option>
+      </select>
+    </div>
+    <div class="dossier__field">
+      <label for="f-email">EMAIL</label>
+      <input type="email" id="f-email" name="email" required maxlength="200" autocomplete="email" placeholder=" " />
+    </div>
+    <div class="dossier__field">
+      <label for="f-tel">TÉLÉPHONE <span class="dossier__optional">(OPTIONNEL)</span></label>
+      <input type="tel" id="f-tel" name="telephone" maxlength="40" autocomplete="tel" placeholder=" " />
+    </div>
+    <div class="dossier__field dossier__field--full">
+      <label for="f-brief">BRIEF — DÉCRIVEZ VOTRE SITUATION (2-3 PHRASES)</label>
+      <textarea id="f-brief" name="brief" required maxlength="5000" rows="5" placeholder=" "></textarea>
+    </div>
+
+    <!-- Honeypot anti-bot : champ caché que les humains ne remplissent pas -->
+    <div class="dossier__honeypot" aria-hidden="true">
+      <label for="f-website">Site web (laisser vide)</label>
+      <input type="text" id="f-website" name="website" tabindex="-1" autocomplete="off" />
+    </div>
+
+    <div class="dossier__submit-row dossier__field--full">
+      <button type="submit" class="btn btn--block" id="dossierSubmit">DÉPOSER LE DOSSIER</button>
+    </div>
+    <p class="dossier__status dossier__field--full" id="dossierStatus" aria-live="polite"></p>
+  </form>
+</section>
+
+<section class="ultimatum" id="ultimatum" data-screen-label="04b Ultimatum">
   <div class="section-tag">SECTION 04 — L'ULTIMATUM</div>
 
   <h2 class="display ult__title">DEUX OPTIONS.</h2>
@@ -1737,7 +1928,7 @@
     });
   });
 
-  // ====== Final CTA: brief shake + confirmation ======
+  // ====== Final CTA: smooth-scroll to #contact + brief shake feedback ======
   document.getElementById('finalCta').addEventListener('click', (e) => {
     e.preventDefault();
     const t = e.currentTarget;
@@ -1748,11 +1939,66 @@
       { transform: 'translate(-2px, 1px)' },
       { transform: 'translate(0,0)' }
     ], { duration: 280, easing: 'steps(4, end)' });
-    t.textContent = 'DOSSIER OUVERT — CONFIRMATION PAR EMAIL';
-    t.style.background = '#000';
-    t.style.color = '#fff';
-    t.style.border = '2px solid #fff';
+    const target = document.getElementById('contact');
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      setTimeout(() => {
+        const firstInput = document.getElementById('f-nom');
+        if (firstInput) firstInput.focus({ preventScroll: true });
+      }, 500);
+    }
   });
+
+  // ====== Dossier form (POST → /api/contact via Resend) ======
+  const dossierForm = document.getElementById('dossierForm');
+  const dossierStatus = document.getElementById('dossierStatus');
+  const dossierSubmit = document.getElementById('dossierSubmit');
+
+  if (dossierForm && dossierStatus && dossierSubmit) {
+    dossierForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      // Validation HTML5 basique
+      if (!dossierForm.checkValidity()) {
+        dossierForm.reportValidity();
+        return;
+      }
+
+      const data = Object.fromEntries(new FormData(dossierForm));
+
+      dossierSubmit.disabled = true;
+      const originalText = dossierSubmit.textContent;
+      dossierSubmit.textContent = 'TRANSMISSION...';
+      dossierStatus.className = 'dossier__status dossier__field--full';
+      dossierStatus.textContent = '';
+
+      try {
+        const response = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+        });
+        const result = await response.json().catch(() => ({}));
+
+        if (response.ok && result.ok) {
+          dossierStatus.className = 'dossier__status dossier__field--full is-success';
+          dossierStatus.textContent = `DOSSIER REÇU. NUMÉRO ${result.dossier}. RÉPONSE SOUS 48 H.`;
+          dossierForm.reset();
+          dossierSubmit.textContent = 'DOSSIER OUVERT';
+          dossierSubmit.style.background = '#000';
+          dossierSubmit.style.color = '#fff';
+          dossierSubmit.style.border = '2px solid #fff';
+        } else {
+          throw new Error(result.error || `Erreur ${response.status}`);
+        }
+      } catch (err) {
+        dossierStatus.className = 'dossier__status dossier__field--full is-error';
+        dossierStatus.textContent = `TRANSMISSION REJETÉE — ${(err.message || 'RÉESSAYEZ').toUpperCase()}`;
+        dossierSubmit.disabled = false;
+        dossierSubmit.textContent = originalText;
+      }
+    });
+  }
 </script>
 
 </body>
