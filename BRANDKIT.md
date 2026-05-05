@@ -1,4 +1,4 @@
-# BRANDKIT — AFFRANCHI.CO
+# BRANDKIT — AFFRANCHI.IO
 
 Contrat de design **immuable**. Toute page, composant, email ou asset livré pour AFFRANCHI doit respecter ce document à la lettre. En cas de doute → relire ce fichier avant de coder.
 

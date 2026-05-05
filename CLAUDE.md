@@ -50,7 +50,7 @@ Pas de « done » sans preuve concrète.
 
 ## Contexte projet
 
-**AFFRANCHI.CO** — landing page brutaliste pour un service fictif d'audit + automatisation IA + transition RH ciblant les dirigeants de PME françaises.
+**AFFRANCHI.IO** — landing page brutaliste pour un service fictif d'audit + automatisation IA + transition RH ciblant les dirigeants de PME françaises.
 
 - **Direction artistique** : noir / anthracite / blanc / gris / rouge sang (#8B0000) ; aucun arrondi, aucun gradient mou.
 - **Typographie** : Anton (display, alternative libre à Impact) + JetBrains Mono (technique).
