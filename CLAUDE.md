@@ -74,6 +74,11 @@ Pas de « done » sans preuve concrète.
 - **Erreur récurrente identifiée dans les transcripts** : `line-height: 0.86` + `clamp(72px, 22vw, 280px)` sur titres display = chevauchements verticaux et débordement horizontal sur mobile (« TUE » qui sort du viewport, points rouges qui mordent la ligne suivante).
 - **Règle dérivée** : pour titres Anton/Impact display brutalistes, plancher `line-height` à `0.92`–`1.0` ; `clamp` viewport unit max `14vw` (jamais `22vw`) ; ajouter `overflow: hidden` sur la section ; `max-width: 100%` sur `html, body` pour bloquer overflow horizontal résiduel.
 
+### 2026-05-05 · Diacritiques Ô/Î/Â/É — chevauchements verticaux à display size
+- **Erreur** : `.calc__title` avec `line-height: 1` et le mot "COÛTE." sur la ligne 3 → l'accent circonflexe de Ô sortait du x-height et **mordait** la ligne du dessus ("MASSE SALARIALE"). Visible uniquement à display size (~60-96px) avec Anton.
+- **Règle dérivée** : si un titre Anton multi-lignes contient un mot avec **diacritique haut** (`Ô`, `Î`, `Â`, `Ê`, `É`, `À`, `Ù`, etc.) sur une ligne ≥ 2, **plancher `line-height` à `1.05`–`1.1`** (pas `0.92` ni `1.0` qui suffisent pour des lignes 100% capitales sans accent). Anton a des line metrics compactes qui n'incluent pas la marge des accents.
+- **Détecteur préventif** : grep le contenu HTML d'un titre pour les caractères `Ô|Î|Â|Ê|É|À|Ù|Ç` ; si présent + `line-height: 1` ou moins → bumper à `1.08`.
+
 ---
 
 ## Conventions de cette codebase
