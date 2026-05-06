@@ -6,6 +6,39 @@
 <title>AFFRANCHI.IO — VOTRE BOÎTE VOUS ÉCRASE</title>
 <meta name="description" content="AFFRANCHI.IO — Diagnostic brutal de votre masse salariale. Audit, automatisation IA, transition RH. Reprenez le contrôle." />
 <meta name="theme-color" content="#000000" />
+
+<!-- Canonical & language alternates -->
+<link rel="canonical" href="https://affranchi.io/" />
+<link rel="alternate" hreflang="fr" href="https://affranchi.io/" />
+<link rel="alternate" hreflang="en" href="https://affranchi.io/en/" />
+<link rel="alternate" hreflang="es" href="https://affranchi.io/es/" />
+<link rel="alternate" hreflang="x-default" href="https://affranchi.io/" />
+
+<!-- Open Graph (WhatsApp, Facebook, LinkedIn, iMessage, Slack, Discord) -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://affranchi.io/" />
+<meta property="og:title" content="AFFRANCHI.IO — VOTRE BOÎTE VOUS ÉCRASE" />
+<meta property="og:description" content="Diagnostic brutal de votre masse salariale. Audit, automatisation IA, transition RH. Reprenez le contrôle." />
+<meta property="og:image" content="https://affranchi.io/api/og" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="AFFRANCHI.IO — Votre boîte vous écrase. Diagnostic brutal de votre masse salariale." />
+<meta property="og:locale" content="fr_FR" />
+<meta property="og:locale:alternate" content="en_US" />
+<meta property="og:locale:alternate" content="es_ES" />
+<meta property="og:site_name" content="AFFRANCHI.IO" />
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@Nolenswaffles" />
+<meta name="twitter:creator" content="@Nolenswaffles" />
+<meta name="twitter:title" content="AFFRANCHI.IO — VOTRE BOÎTE VOUS ÉCRASE" />
+<meta name="twitter:description" content="Diagnostic brutal de votre masse salariale. Audit · IA · Transition RH." />
+<meta name="twitter:image" content="https://affranchi.io/api/og" />
+
+<!-- Favicon (SVG inline : carré noir, 'A' blanc, point rouge brutaliste) -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23000'/%3E%3Ctext x='50' y='78' font-family='Impact,Arial,sans-serif' font-weight='900' font-size='84' fill='white' text-anchor='middle'%3EA%3C/text%3E%3Ccircle cx='82' cy='22' r='9' fill='%23B30000'/%3E%3C/svg%3E" />
+
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Oswald:wght@500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
@@ -129,6 +162,31 @@
     0%, 50% { opacity: 1; }
     50.01%, 100% { opacity: 0.15; }
   }
+
+  /* Language switcher — fixed top-right corner, brutaliste */
+  .lang-switcher {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    display: flex;
+    z-index: 100;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    font-weight: 700;
+  }
+  .lang-switcher a, .lang-switcher span {
+    padding: 7px 11px;
+    border: 1px solid var(--white);
+    color: var(--white);
+    background: var(--black);
+    text-decoration: none;
+    text-transform: uppercase;
+    display: inline-block;
+  }
+  .lang-switcher > * + * { border-left: none; }
+  .lang-switcher .lang-current { background: var(--white); color: var(--black); cursor: default; }
+  .lang-switcher a:hover { background: var(--blood-hot); border-color: var(--blood-hot); }
 
   .choc__title {
     margin-top: clamp(48px, 7vw, 72px); /* bumped from 20px — Î (BOÎTE) ligne 1 mordait le border rouge .warning au-dessus, cf. CLAUDE.md leçon diacritiques */
@@ -1251,6 +1309,12 @@
 </style>
 </head>
 <body>
+
+<nav class="lang-switcher" aria-label="Langue">
+  <span class="lang-current">FR</span>
+  <a href="/en/" hreflang="en">EN</a>
+  <a href="/es/" hreflang="es">ES</a>
+</nav>
 
 <!-- TICKER -->
 <div class="ticker" aria-hidden="true">

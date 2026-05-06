@@ -8,6 +8,7 @@
     "node": ">=20"
   },
   "dependencies": {
+    "@vercel/og": "^0.6.4",
     "resend": "^4.0.0",
     "twitter-api-v2": "^1.18.0"
   }

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AFFRANCHI.IO — Para dirigentes de PYMES francesas aplastados por la carga salarial</title>
+<meta name="description" content="AFFRANCHI: diagnóstico brutal de la carga salarial de las PYMES francesas. 43,6% de cargas URSSAF, 16 meses de espera laboral, 538k separaciones anuales. Auditoría, automatización IA, transición RR.HH. Resumen en español." />
+<meta name="theme-color" content="#000000" />
+
+<!-- Canonical & language alternates -->
+<link rel="canonical" href="https://affranchi.io/es/" />
+<link rel="alternate" hreflang="fr" href="https://affranchi.io/" />
+<link rel="alternate" hreflang="en" href="https://affranchi.io/en/" />
+<link rel="alternate" hreflang="es" href="https://affranchi.io/es/" />
+<link rel="alternate" hreflang="x-default" href="https://affranchi.io/" />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://affranchi.io/es/" />
+<meta property="og:title" content="AFFRANCHI.IO — Para dirigentes de PYMES francesas aplastados por la carga salarial" />
+<meta property="og:description" content="Diagnóstico brutal de la carga salarial francesa. Auditoría, automatización IA, transición RR.HH." />
+<meta property="og:image" content="https://affranchi.io/api/og?lang=es" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:locale" content="es_ES" />
+<meta property="og:locale:alternate" content="fr_FR" />
+<meta property="og:locale:alternate" content="en_US" />
+<meta property="og:site_name" content="AFFRANCHI.IO" />
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@Nolenswaffles" />
+<meta name="twitter:creator" content="@Nolenswaffles" />
+<meta name="twitter:title" content="AFFRANCHI.IO — Construido para el mercado francés" />
+<meta name="twitter:description" content="Diagnóstico brutal de la carga salarial francesa. Auditoría · IA · Transición RR.HH." />
+<meta name="twitter:image" content="https://affranchi.io/api/og?lang=es" />
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23000'/%3E%3Ctext x='50' y='78' font-family='Impact,Arial,sans-serif' font-weight='900' font-size='84' fill='white' text-anchor='middle'%3EA%3C/text%3E%3Ccircle cx='82' cy='22' r='9' fill='%23B30000'/%3E%3C/svg%3E" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --black: #000;
+    --white: #fff;
+    --gray: #888;
+    --gray-dim: #2a2a2a;
+    --blood: #8B0000;
+    --blood-hot: #B30000;
+    --display-font: 'Anton', Impact, Arial, sans-serif;
+  }
+  html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+    background: var(--black);
+    color: var(--white);
+    font-family: 'JetBrains Mono', monospace;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+  }
+
+  .lang-switcher {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    display: flex;
+    z-index: 100;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    font-weight: 700;
+  }
+  .lang-switcher a, .lang-switcher span {
+    padding: 7px 11px;
+    border: 1px solid var(--white);
+    color: var(--white);
+    background: var(--black);
+    text-decoration: none;
+    text-transform: uppercase;
+    display: inline-block;
+  }
+  .lang-switcher > * + * { border-left: none; }
+  .lang-switcher .lang-current { background: var(--white); color: var(--black); cursor: default; }
+  .lang-switcher a:hover { background: var(--blood-hot); border-color: var(--blood-hot); }
+
+  main {
+    min-height: 100vh;
+    padding: 64px 24px 80px;
+    display: flex;
+    flex-direction: column;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+  .brand-logo {
+    display: inline-block;
+    color: var(--white);
+    font-weight: 700;
+    border: 2px solid var(--white);
+    padding: 6px 10px;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+  .brand-logo .dot { color: var(--blood-hot); }
+
+  h1 {
+    font-family: var(--display-font);
+    text-transform: uppercase;
+    font-size: clamp(40px, 9vw, 100px);
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+    margin-top: clamp(40px, 7vw, 64px);
+  }
+  h1 .red { color: var(--blood-hot); }
+
+  h2 {
+    font-family: var(--display-font);
+    text-transform: uppercase;
+    font-size: clamp(20px, 3vw, 26px);
+    letter-spacing: 0.04em;
+    margin-top: 48px;
+    margin-bottom: 12px;
+    color: var(--blood-hot);
+    border-bottom: 1px solid var(--gray-dim);
+    padding-bottom: 8px;
+  }
+
+  p {
+    font-size: 14px;
+    line-height: 1.7;
+    max-width: 720px;
+    margin-top: 12px;
+    color: #ddd;
+  }
+  p strong { color: var(--white); }
+
+  ol { padding-left: 24px; margin-top: 12px; }
+  ol li {
+    margin-top: 10px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #ddd;
+  }
+  ol li strong { color: var(--white); letter-spacing: 0.05em; }
+
+  .cta-row { margin-top: 48px; display: flex; gap: 12px; flex-wrap: wrap; }
+  .cta {
+    display: inline-block;
+    padding: 14px 22px;
+    background: var(--blood);
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-size: 12px;
+    border: 2px solid var(--blood);
+    transition: all 0.15s;
+  }
+  .cta:hover { background: var(--blood-hot); border-color: var(--blood-hot); }
+  .cta--ghost { background: transparent; color: var(--white); border-color: var(--white); }
+  .cta--ghost:hover { background: var(--white); color: var(--black); }
+
+  .foot {
+    margin-top: 80px;
+    padding-top: 24px;
+    border-top: 1px solid var(--gray-dim);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--gray);
+    text-transform: uppercase;
+  }
+  .foot .red { color: var(--blood-hot); }
+</style>
+</head>
+<body>
+
+<nav class="lang-switcher" aria-label="Idioma">
+  <a href="/" hreflang="fr">FR</a>
+  <a href="/en/" hreflang="en">EN</a>
+  <span class="lang-current">ES</span>
+</nav>
+
+<main>
+  <span class="brand-logo">AFFRANCHI<span class="dot">.IO</span></span>
+
+  <h1>PARA DIRIGENTES DE PYMES FRANCESAS<br />APLASTADOS POR LA <span class="red">CARGA SALARIAL</span>.</h1>
+
+  <h2>La versión corta</h2>
+  <p>Las PYMES francesas pagan <strong>43,6 % de cargas sociales patronales</strong> (URSSAF) sobre cada salario bruto. El salario mínimo de 2026 (1.823 €) cuesta en realidad 2.619 € al empleador.</p>
+  <p>Sumemos: 16 meses promedio de espera en el tribunal laboral francés (Sénat 2024), 538.433 rupturas convencionales en 2024 (DARES), e indexación creciente del salario mínimo. Las cuentas ya no salen.</p>
+
+  <h2>Qué hacemos</h2>
+  <ol>
+    <li><strong>AUDITORÍA</strong> — cuantificar el coste exacto de tus operaciones.</li>
+    <li><strong>AUTOMATIZAR</strong> — automatización con IA de tareas de bajo valor y alto volumen.</li>
+    <li><strong>TRANSICIÓN</strong> — reducción humana, requalificación, o salida acompañada.</li>
+  </ol>
+  <p>90 días. Tres palancas. Cifras antes / después. Sin diapositivas. Sin hoja de ruta de 18 meses. Sin retainer. <strong>Si no entregamos ahorros medibles, no pagas.</strong></p>
+
+  <h2>Construido para el mercado francés</h2>
+  <p>Los datos que sustentan nuestro trabajo (URSSAF, INSEE, DARES, tribunales laborales franceses) son específicos de Francia. Actualmente solo servimos a dirigentes de PYMES francesas.</p>
+  <p>Si operas una consultoría similar en tu propio mercado y reconoces los mismos patrones, podemos colaborar. Contáctanos.</p>
+
+  <div class="cta-row">
+    <a href="mailto:contact@affranchi.io?subject=AFFRANCHI%20%E2%80%94%20Consulta%20internacional" class="cta">Contáctanos</a>
+    <a href="/" class="cta cta--ghost">Leer la versión francesa</a>
+  </div>
+
+  <div class="foot">
+    © 2026 AFFRANCHI.IO &nbsp;·&nbsp; CONTACT@AFFRANCHI.IO &nbsp;·&nbsp; <span class="red">DIAGNÓSTICO, NO PUBLICIDAD</span>
+  </div>
+</main>
+
+</body>
+</html>
