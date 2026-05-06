@@ -131,9 +131,9 @@
   }
 
   .choc__title {
-    margin-top: 20px;
+    margin-top: clamp(48px, 7vw, 72px); /* bumped from 20px — Î (BOÎTE) ligne 1 mordait le border rouge .warning au-dessus, cf. CLAUDE.md leçon diacritiques */
     font-size: clamp(56px, 14vw, 200px);
-    line-height: 1.0;
+    line-height: 1.1; /* bumped from 1.0 — laisse de la marge pour les accents Î/Ê/É/Â à display size */
     overflow-wrap: break-word;
     letter-spacing: -0.02em;
   }
