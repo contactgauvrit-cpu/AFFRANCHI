@@ -41,11 +41,14 @@ export default async function handler(req, res) {
     return res.status(200).json({ ok: true, skipped: true, reason: 'no tweets defined' });
   }
 
-  // 3. Sélection déterministe par jour-de-l'année
+  // 3. Sélection déterministe par jour-de-l'année + slot (matin vs lunch)
+  // Schedule vercel.json : 7h UTC (slot 0 = matin Paris 9h) + 11h UTC (slot 1 = lunch Paris 13h)
+  // Formule : index = (dayOfYear × 2 + slot) % TWEETS.length → 2 tweets différents par jour, jamais de doublon
   const now = new Date();
   const yearStart = new Date(now.getFullYear(), 0, 1);
   const dayOfYear = Math.floor((now - yearStart) / 86400000);
-  const index = dayOfYear % TWEETS.length;
+  const slot = now.getUTCHours() < 9 ? 0 : 1; // <9h UTC = matin, sinon lunch ou plus tard
+  const index = (dayOfYear * 2 + slot) % TWEETS.length;
   const entry = TWEETS[index];
   const isThread = Array.isArray(entry.thread) && entry.thread.length > 0;
   const previewContent = isThread ? { thread: entry.thread } : { text: entry.text };
