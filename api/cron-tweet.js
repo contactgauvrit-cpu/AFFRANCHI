@@ -53,6 +53,25 @@ export default async function handler(req, res) {
   const isThread = Array.isArray(entry.thread) && entry.thread.length > 0;
   const previewContent = isThread ? { thread: entry.thread } : { text: entry.text };
 
+  // 3b. Mode debug : ?debug=1 → retourne l'index calculé sans rien poster
+  // Utile pour vérifier dayOfYear et slot du runtime sans cramer un tweet
+  const url = new URL(req.url, 'https://x');
+  if (url.searchParams.get('debug') === '1') {
+    return res.status(200).json({
+      ok: true,
+      debug: true,
+      runtime_now_iso: now.toISOString(),
+      runtime_year: now.getFullYear(),
+      runtime_utc_hours: now.getUTCHours(),
+      computed_dayOfYear: dayOfYear,
+      computed_slot: slot,
+      computed_index: index,
+      tweets_length: TWEETS.length,
+      selected_category: entry.category,
+      selected_preview: typeof entry.text === 'string' ? entry.text.slice(0, 80) + '...' : '[thread]',
+    });
+  }
+
   // 4. Mode dry-run : pas de post réel tant que CRON_ENABLED !== "true"
   if (process.env.CRON_ENABLED !== 'true') {
     console.log('[cron-tweet] DRY RUN — index:', index, '— category:', entry.category, '— content:', previewContent);
